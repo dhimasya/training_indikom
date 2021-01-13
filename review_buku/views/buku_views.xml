@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="buku_view_form_inherit_review_buku" model="ir.ui.view">
+        <field name="name">buku.view.form.inherit</field>
+        <field name="model">buku</field>
+        <field name="inherit_id" ref="perpus.buku_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='halaman']" position="after">
+                <field name="review" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

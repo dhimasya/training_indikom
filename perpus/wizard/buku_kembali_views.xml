@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="buku_kembali_view_form" model="ir.ui.view">
+        <field name="name">buku.kembali.view.form</field>
+        <field name="model">buku.kembali</field>
+        <field name="arch" type="xml">
+            <form string="Buku Kembali">
+                <sheet>
+                    <group>
+                        <field name="transaksi_ids" readonly="1" />
+                        <field name="tanggal_kembali" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Save" name="action_simpan" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="buku_kembali_action" model="ir.actions.act_window">
+        <field name="name">Buku Kembali</field>
+        <field name="res_model">buku.kembali</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

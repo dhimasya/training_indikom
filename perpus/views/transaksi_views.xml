@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="transaksi_view_form" model="ir.ui.view">
+        <field name="name">transaksi.view.form</field>
+        <field name="model">transaksi</field>
+        <field name="arch" type="xml">
+            <form string="Transaksi">
+                <header>
+                    <button string="Konfirmasi" context="{'tipe': 'level1'}" name="action_konfirmasi" type="object" class="oe_highlight" states="draft"/>
+                    <button string="Konfirmasi2" context="{'tipe': 'level2'}" name="action_konfirmasi" type="object" class="oe_highlight" states="draft"/>
+                    <button string="Kembali" name="action_kembali" type="object" class="oe_highlight" states="proses"/>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="nomor" />
+                        <field name="anggota_id" context="{'from_transaksi': True}" />
+                        <!-- <field name="buku_id" /> -->
+                        <field name="kategori_id" />
+                        <field name="line_ids">
+                            <tree>
+                                <field name="id" />
+                                <field name="buku_id" />
+                                <field name="deskripsi" />
+                            </tree>
+                        </field>
+                        <field name="tanggal_kembali" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="transaksi_action" model="ir.actions.act_window">
+        <field name="name">Transaksi</field>
+        <field name="res_model">transaksi</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        id="transaksi_menu"
+        name="Transaksi"
+        action="transaksi_action"
+        groups="base.group_user"
+        parent="perpus_menu"
+        sequence="20"/>
+
+</odoo>

@@ -1,0 +1,5 @@
+[MASTER]
+init-hook='import sys; sys.path.append("/opt/odoo14/odoo")'
+
+[MESSAGES CONTROL]
+disable=missing-class-docstring,missing-module-docstring,missing-function-docstring,missing-final-newline

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="kategori_buku_view_form" model="ir.ui.view">
+        <field name="name">kategori.buku.view.form</field>
+        <field name="model">kategori.buku</field>
+        <field name="arch" type="xml">
+            <form string="Kategori Buku">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <button string="Buka List Buku" name="action_buka_list_buku" type="object" class="oe_highlight"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="kategori_buku_action" model="ir.actions.act_window">
+        <field name="name">Kategori Buku</field>
+        <field name="res_model">kategori.buku</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        id="kategori_buku_menu"
+        name="Kategori Buku"
+        action="kategori_buku_action"
+        groups="base.group_user"
+        parent="master_menu"
+        sequence="30"/>
+
+</odoo>

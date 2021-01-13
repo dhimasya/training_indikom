@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_buku_user,access.user,model_buku,base.group_user,1,1,1,1
+access_kategori_buku_user,access.kategori.buku.user,model_kategori_buku,base.group_user,1,1,1,1
+access_anggota_user,access.anggota.user,model_anggota,base.group_user,1,1,1,1
+access_transaksi_user,access.transaksi.user,model_transaksi,base.group_user,1,1,1,1
+access_transaksi_line_user,access.transaksi.line.user,model_transaksi_line,base.group_user,1,1,1,1
+access_buku_kembali_user,access.buku.kembali.user,model_buku_kembali,base.group_user,1,1,1,1

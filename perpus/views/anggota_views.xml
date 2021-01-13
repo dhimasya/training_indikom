@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="anggota_view_form" model="ir.ui.view">
+        <field name="name">anggota.view.form</field>
+        <field name="model">anggota</field>
+        <field name="arch" type="xml">
+            <form string="Anggota">
+                <sheet>
+                    <group>
+                        <field name="nama"></field>
+                        <field name="tanggal_lahir" />
+                        <field name="alamat" />
+                        <field name="telfon" /> 
+                        <field name="email" />
+                        <field name="dibuat_dari" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="anggota_action" model="ir.actions.act_window">
+        <field name="name">Anggota</field>
+        <field name="res_model">anggota</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        id="anggota_menu"
+        name="Anggota"
+        action="anggota_action"
+        groups="base.group_user"
+        parent="master_menu"
+        sequence="20"/>
+
+</odoo>

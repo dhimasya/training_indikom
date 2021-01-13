@@ -1,0 +1,8 @@
+{
+    "python.autoComplete.showAdvancedMembers": false,
+    "python.autoComplete.extraPaths": [
+    "/opt/odoo14/odoo"
+    ],
+    "python.pythonPath": "/usr/bin/python3",
+    "python.linting.enabled": true,
+}
