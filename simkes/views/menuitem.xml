@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="kunjungan_view_form" model="ir.ui.view">
+        <field name="name">kunjungan.view.form</field>
+        <field name="model">kunjungan</field>
+        <field name="arch" type="xml">
+            <form string="Kunjungan">
+                <sheet>
+                    <group>
+                        <field name="nomor" />
+                        <field name="kelas_id" />
+                        <field name="billing_ids" context="{'default_kelas_id': kelas_id}">
+                            <tree editable="bottom">
+                                <field name="kelas_id" invisible="1"/>
+                                <field name="tarif_id" />
+                                <field name="jumlah" />
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="kunjungan_action" model="ir.actions.act_window">
+        <field name="name">Kunjungan</field>
+        <field name="res_model">kunjungan</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="tarif_kelas_action" model="ir.actions.act_window">
+        <field name="name">Tarif Kelas</field>
+        <field name="res_model">tarif.kelas</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        id="simkes_menu"
+        name="Simkes"
+        sequence="10"/>
+
+    <menuitem
+        id="kunjungan_menu"
+        name="Kunjungan"
+        action="kunjungan_action"
+        groups="base.group_user"
+        parent="simkes_menu"
+        sequence="10"/>
+
+    <menuitem
+        id="tarif_kelas_menu"
+        name="Tarif Kelas"
+        action="tarif_kelas_action"
+        groups="base.group_user"
+        parent="simkes_menu"
+        sequence="20"/>
+
+</odoo>

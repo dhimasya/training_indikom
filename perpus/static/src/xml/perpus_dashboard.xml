@@ -1,0 +1,10 @@
+<templates>
+    <t t-name="perpus_dashboard">
+        <div class="perpus-dashboard-container">
+            <div class="title">aaa</div>
+            <input id="search_judul"/>
+            <div class="btn btn-primary search">search</div>
+            <div class="content"/>
+        </div>
+    </t>
+</templates>

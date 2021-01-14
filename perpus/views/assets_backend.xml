@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="assets_backend" name="Perpus Backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/perpus/static/src/js/perpus_dashboard.js"/>
+            <link rel="stylesheet" type="text/scss" href="/perpus/static/src/scss/perpus_dashboard.scss"/>
+        </xpath>
+    </template>
+
+</odoo>

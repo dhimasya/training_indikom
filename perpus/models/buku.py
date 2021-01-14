@@ -62,3 +62,14 @@ class Buku(models.Model):
         res = super(Buku, self).unlink()
         # proses setelah hapus
         return res
+
+    def _format_tanggal_terbit(self):
+        return self.tanggal_terbit.strftime('%d/%m/%Y')
+
+
+    def action_print_buku(self):
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'new',
+            'url': '/report/html/%s/%s' % ('perpus.buku_report_template', self.id),
+        }

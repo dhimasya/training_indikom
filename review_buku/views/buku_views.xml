@@ -12,4 +12,31 @@
         </field>
     </record>
 
+    <record id="buku_view_kanban_inherit_review_buku" model="ir.ui.view">
+        <field name="name">buku.view.kanban.inherit</field>
+        <field name="model">buku</field>
+        <field name="inherit_id" ref="perpus.buku_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban/field[@name='color']" position="after">
+                <field name="id" />
+                <field name="review" />
+            </xpath>
+            <xpath expr="//div[@t-attf-class='oe_kanban_content']" position="attributes">
+                <attribute name="style">height: 400px</attribute>
+            </xpath>
+            <xpath expr="//field[@name='tanggal_terbit']" position="after">
+                <br/>
+                Review:
+                <div t-raw="record.review.raw_value"/>
+                <div t-attf-class="btn btn-danger button_{{record.id.raw_value}}">Klik aku</div>
+                <script>
+                    $(".button_" + <t t-esc="record.id.raw_value"/>).click(function() {
+                        // ambil action pakai ajax
+                        window.location = "/web#id=<t t-esc="record.id.raw_value"/>&amp;action=263&amp;model=buku&amp;view_type=form"
+                    })
+                </script>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

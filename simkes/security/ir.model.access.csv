@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_billing_user,access.billing.user,model_billing,base.group_user,1,1,1,1
+access_kelas_user,access.kelas.user,model_kelas,base.group_user,1,1,1,1
+access_tarif_user,access.tarif.user,model_tarif,base.group_user,1,1,1,1
+access_tarif_kelas_user,access.tarif.kelas.user,model_tarif_kelas,base.group_user,1,1,1,1
+access_kunjungan_user,access.kunjungan.user,model_kunjungan,base.group_user,1,1,1,1

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="buku_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h1><t t-esc="doc.name"/></h1>
+                    <div style="background: #ddd; padding: 50px; margin-left: 100px">
+                        <table>
+                            <tr>
+                                <td>tanggal terbit</td>
+                                <td><t t-esc="doc._format_tanggal_terbit()"/></td>
+                            </tr>
+                            <tr>
+                                <td>barcode</td>
+                                <td><img alt="Barcode" t-att-src="'/report/barcode/Code128/%s' % '123456'" style="width: 300px"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_buku" model="ir.actions.report">
+        <field name="name">Report Buku</field>
+        <field name="model">buku</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">perpus.buku_report_template</field>
+        <field name="report_file">perpus.buku_report_template</field>
+        <field name="binding_model_id" ref="model_buku"/>
+        <field name="binding_type">action</field>
+    </record>
+
+</odoo>

@@ -8,6 +8,7 @@
             <form string="Buku">
                 <sheet>
                     <group>
+                        <button string="Preview Buku" name="action_print_buku" type="object" class="oe_highlight"/>
                         <field name="name" />
                         <field name="kategori_id" />
                         <field name="color" widget="color_picker" />
@@ -16,6 +17,30 @@
                         <field name="usia_buku" />
                         <field name="halaman" />
                         <field name="available" readonly="1" />
+                        <button class="btn btn-primary direct_print" t-attr-data-model="{{record.id}}">Direct Print</button>
+                        <script>
+                            console.log(this)
+                            $('.direct_print').click(function(){
+                                $.ajax({
+                                    type: 'GET',
+                                    url: 'http://localhost:8082/report/pdf/perpus.buku_report_template/2',
+                                    success: function(html){
+                                        console.log(html)
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: 'http://localhost/direct_print.php?dokumen=' + html,
+                                            dataType: 'json',
+                                            success: function (res) {
+                                                console.log(res)
+                                            },
+                                            error: function(e) {
+                                                console.log(e)
+                                            }
+                                        })
+                                    }
+                                })
+                            })
+                        </script>
                     </group>
                 </sheet>
             </form>
@@ -85,7 +110,7 @@
                 <field name="color"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}} oe_kanban_global_click_edit oe_kanban_card">
+                        <div t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}} oe_kanban_card">
                             <div t-attf-class="oe_kanban_content">
                                 Judul:
                                 <field name="name"/>
@@ -150,5 +175,19 @@
         groups="base.group_user"
         parent="master_menu"
         sequence="10"/>
+
+    <record id="action_perpus_dashboard" model="ir.actions.client">
+        <field name="name">Dashboard</field>
+        <field name="tag">widget_perpus_dashboard</field>
+        <field name="target">main</field>
+    </record>
+
+    <menuitem
+        id="perpus_dashboard_menu"
+        name="Dashboard"
+        action="action_perpus_dashboard"
+        groups="base.group_user"
+        parent="perpus_menu"
+        sequence="5"/>
 
 </odoo>
