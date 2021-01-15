@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="cabang_toko_action" model="ir.actions.act_window">
+        <field name="name">Cabang Toko</field>
+        <field name="res_model">cabang.toko</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="tokoonlen_menu"
+        name="TokoOnlen"
+        sequence="20"/>
+
+    <menuitem
+        id="cabang_toko_menu"
+        name="Cabang Toko"
+        action="cabang_toko_action"
+        groups="base.group_user"
+        parent="tokoonlen_menu"
+        sequence="20"/>
+
+</odoo>

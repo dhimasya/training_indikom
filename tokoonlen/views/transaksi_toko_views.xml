@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="transaksi_toko_view_form" model="ir.ui.view">
+        <field name="name">transaksi.toko.view.form</field>
+        <field name="model">transaksi.toko</field>
+        <field name="arch" type="xml">
+            <form string="Transaksi Toko">
+                <header>
+                    <button string="Cancel" name="action_cancel" type="object" class="oe_highlight" groups="tokoonlen.cancel_transaksi"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"></field>
+                        <field name="kasir_id"></field>
+                        <field name="cabang_id"></field>
+                        <field name="line_ids" context="{'default_cabang_id': cabang_id}">
+                            <tree>
+                                <field name="produk_id" />    
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="transaksi_toko_view_tree" model="ir.ui.view">
+        <field name="name">transaksi.toko.view.tree</field>
+        <field name="model">transaksi.toko</field>
+        <field name="arch" type="xml">
+            <tree string="Transaksi Toko" multi_edit="1">
+                <field name="name" />
+                <field name="kasir_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="transaksi_toko_action" model="ir.actions.act_window">
+        <field name="name">Transaksi Toko</field>
+        <field name="res_model">transaksi.toko</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="transaksi_toko_menu"
+        name="Transaksi Toko"
+        action="transaksi_toko_action"
+        groups="base.group_user"
+        parent="tokoonlen_menu"
+        sequence="10"/>
+
+</odoo>

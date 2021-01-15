@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="transaksi_toko_per_kasir" model="ir.rule">
+        <field name="name">transaksi.toko.per.kasir</field>
+        <field name="model_id" ref="tokoonlen.model_transaksi_toko"/>
+        <field name="groups" eval="[(5, 0, 0)]"/>
+        <field name="domain_force">['|', ('kasir_id', '=', user.id), ('kasir_id', '=', False)]</field>
+    </record>
+
+    <record id="transaksi_toko_per_cabang_kasir" model="ir.rule">
+        <field name="name">transaksi.toko.per.cabang.kasir</field>
+        <field name="model_id" ref="tokoonlen.model_transaksi_toko"/>
+        <field name="groups" eval="[(5, 0, 0), (4, ref('tokoonlen.kasir_toko'))]"/>
+        <field name="domain_force">[('cabang_id', 'in', user.cabang_ids.ids)]</field>
+    </record>
+
+    <record id="transaksi_toko_per_cabang_manager" model="ir.rule">
+        <field name="name">transaksi.toko.per.cabang.manager</field>
+        <field name="model_id" ref="tokoonlen.model_transaksi_toko"/>
+        <field name="groups" eval="[(5, 0, 0), (4, ref('tokoonlen.manager_toko'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+</odoo>

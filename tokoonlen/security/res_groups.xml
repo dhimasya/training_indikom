@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="module_category_online" model="ir.module.category">
+        <field name="name">Online</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="kasir_toko" model="res.groups">
+        <field name="name">Akses Kasir</field>
+        <field name="category_id" ref="module_category_online"/>
+    </record>
+
+    <record id="manager_toko" model="res.groups">
+        <field name="name">Akses Manager</field>
+        <field name="category_id" ref="module_category_online"/>
+    </record>
+
+    <record id="cancel_transaksi" model="res.groups">
+        <field name="name">Cancel Transaksi</field>
+        <field name="category_id" ref="module_category_online"/>
+    </record>
+
+</odoo>
